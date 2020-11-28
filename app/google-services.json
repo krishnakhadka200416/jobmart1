@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "954662889703",
+    "firebase_url": "https://jobmart1-58afc.firebaseio.com",
+    "project_id": "jobmart1-58afc",
+    "storage_bucket": "jobmart1-58afc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954662889703:android:97f49bea34ef994814da42",
+        "android_client_info": {
+          "package_name": "com.example.jobmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954662889703-15ep47kvhtbddq21hc9l598t8s27oo7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9SzYsxXLbkMCbpRfIUaBmz3KxE20ipSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954662889703-15ep47kvhtbddq21hc9l598t8s27oo7h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
