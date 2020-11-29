@@ -17,7 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_home.*
 
 private const val TAG = "Home"
-private val EXTRA_USERNAME = "EXTRA_USERNAME"
+val EXTRA_USERNAME = "EXTRA_USERNAME"
 open class Home : AppCompatActivity() {
     private var signedInUser: User? = null
     private lateinit var  firestoreDb: FirebaseFirestore
@@ -78,6 +78,14 @@ open class Home : AppCompatActivity() {
                 Log.i(TAG, "Post ${post}")
             }
 
+        }
+        facCreate1.setOnClickListener{
+            val intent= Intent(this, Message::class.java )
+            startActivity(intent)
+        }
+        fabcreate2.setOnClickListener{
+            val intent= Intent(this, CreateJob::class.java )
+            startActivity(intent)
         }
     }
 
