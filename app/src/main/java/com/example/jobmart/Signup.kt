@@ -1,15 +1,14 @@
 package com.example.jobmart
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.jobmart.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_create_job.*
 import kotlinx.android.synthetic.main.activity_signup.*
 
 
@@ -74,9 +73,32 @@ private fun signupuser(){
     auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
         .addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                Toast.makeText(this, "Sign Up Successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, Home::class.java))
-                finish()
+                val testUser = FirebaseAuth.getInstance()
+                    .currentUser //getting the current logged in users id
+                val userUid = testUser!!.uid
+                val uidInput = userUid
+                val db = FirebaseFirestore.getInstance()
+                val user: MutableMap<String,Any> = HashMap()
+                    user["education"] = email.text.toString()
+                    user["goal"] = first_name.text.toString()
+                    user["interest"] = middle_name.text.toString()
+                    user["profession"]=  last_name.text.toString()
+                    user["username"] = first_name.text.toString()
+
+                db.collection("users").document(uidInput)
+                    .set(user)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Sign Up Successful", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, Home::class.java))
+                        finish()
+                    }
+                    .addOnFailureListener{
+                        Toast.makeText(this, "Sign Up notsuccessful", Toast.LENGTH_SHORT).show()
+                    }
+
+
+
+
             } else {
                 Toast.makeText(baseContext, "Email Already Used or invalid email.",
                     Toast.LENGTH_SHORT).show()
