@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_signup.*
+import kotlinx.android.synthetic.main.activity_user_info.*
 
 
 private const val TAG = "CreateJob"
@@ -79,10 +80,10 @@ private fun signupuser(){
                 val uidInput = userUid
                 val db = FirebaseFirestore.getInstance()
                 val user: MutableMap<String,Any> = HashMap()
-                    user["education"] = email.text.toString()
-                    user["goal"] = first_name.text.toString()
-                    user["interest"] = middle_name.text.toString()
-                    user["profession"]=  last_name.text.toString()
+                    user["education"] = education1.text.toString()
+                    user["goal"] = goal1.text.toString()
+                    user["interest"] = interest1.text.toString()
+                    user["profession"]=  profession1.text.toString()
                     user["username"] = first_name.text.toString()
 
                 db.collection("users").document(uidInput)

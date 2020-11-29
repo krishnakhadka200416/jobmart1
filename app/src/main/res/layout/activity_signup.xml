@@ -1,120 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Signup">
+    tools:context=".Signup"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:layout_marginLeft="120dp"
+        android:text="Registration"
+        android:textSize="32dp"
+        android:textColor="#5D568A"
+        />
+
     <EditText
         android:id="@+id/first_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="48dp"
-        android:layout_marginRight="164dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
         android:ems="10"
         android:hint="First Name*..."
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registration" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/middle_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="168dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
         android:ems="10"
         android:hint="Middle Name..."
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/first_name" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/last_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="168dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Last Name*..."
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/middle_name" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginRight="168dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
         android:ems="10"
         android:hint="Email*..."
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/last_name" />
+        android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="168dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password" />
+
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="168dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
         android:ems="10"
         android:hint="Password*...."
         android:inputType="textPassword"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email" />
+        />
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_marginLeft="30dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="textPersonName"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/education1"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:ems="10"
+        android:layout_height="wrap_content"
+
+        android:hint="Eduction" />
+
+    <EditText
+        android:id="@+id/interest1"
+        android:layout_width="wrap_content"
+        android:ems="10"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:hint="Interest"
+    />
+
+    <EditText
+        android:id="@+id/goal1"
+        android:layout_width="wrap_content"
+        android:ems="10"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:hint="Goal"
+         />
+    <EditText
+        android:id="@+id/profession1"
+        android:layout_width="wrap_content"
+        android:ems="10"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:hint="Profession"
+        />
+
+    <TextView
+        android:id="@+id/required_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="292dp"
+        android:layout_marginLeft="30dp"
+        android:text="* Field need to fill up"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        />
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginTop="12dp"
-
-        android:layout_marginRight="152dp"
+        android:layout_marginLeft="120dp"
         android:text="Register"
         app:backgroundTint="#5D568A"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/required_field"
-        tools:ignore="MissingConstraints" />
+        />
 
-    <TextView
-        android:id="@+id/registration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginRight="204dp"
-        android:text="Registration"
-        android:textSize="32dp"
-        android:textColor="#5D568A"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/required_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="292dp"
-        android:text="* Field need to fill up"
-        android:textSize="10sp"
-        android:textStyle="italic"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phone_number" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
