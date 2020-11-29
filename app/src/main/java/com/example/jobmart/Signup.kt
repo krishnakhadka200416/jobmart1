@@ -5,11 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.example.jobmart.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.StorageReference
+import kotlinx.android.synthetic.main.activity_create_job.*
 import kotlinx.android.synthetic.main.activity_signup.*
+
+
+private const val TAG = "CreateJob"
+private  const val PICK_PHOTO_CODE = 1234
+private lateinit var firestoreDb : FirebaseFirestore
+private lateinit var storageReference : StorageReference
 
 class Signup : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -21,6 +32,13 @@ class Signup : AppCompatActivity() {
     }
 }
 private fun signupuser(){
+    val user1 = User(
+            first_name.text.toString(),
+            middle_name.text.toString(),
+            last_name.text.toString()
+
+
+    )
     if(email.text.toString().isEmpty()){
         email.error = "Please enter email"
         email.requestFocus()

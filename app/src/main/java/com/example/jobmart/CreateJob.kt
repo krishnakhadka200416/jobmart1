@@ -24,6 +24,8 @@ private lateinit var storageReference : StorageReference
 class CreateJob : AppCompatActivity() {
     private var signedInUser: User? = null
     private var photoUri: Uri?= null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_job)

@@ -23,6 +23,12 @@ class ProfileActivity :  Home() {
             startActivity(Intent(this, SignIn::class.java))
             finish()
         }
+        if (item.itemId == R.id.menu_profileinfo){
+            Log.i(TAG, "User wants to go to profile page")
+            val intent = Intent(this, UserInfo::class.java)
+            startActivity(intent)
+            finish()
+        }
         return super.onOptionsItemSelected(item)
     }
 }
