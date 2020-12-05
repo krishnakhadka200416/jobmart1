@@ -10,20 +10,20 @@
         android:id="@+id/rvPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabcreate2"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="200dp"
         android:backgroundTint="#FFFFFF"
         android:clickable="true"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_add" />
 
@@ -31,7 +31,7 @@
         android:id="@+id/facCreate1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
+        android:layout_marginStart="328dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="140dp"
         android:backgroundTint="#FFFFFF"
@@ -40,7 +40,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvPosts"
-        app:layout_constraintVertical_bias="0.956"
+        app:layout_constraintVertical_bias="0.649"
         app:srcCompat="@drawable/ic_baseline_message_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCreate3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="328dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="210dp"
+        android:backgroundTint="#FFFFFF"
+        android:clickable="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvPosts"
+        app:layout_constraintVertical_bias="0.734"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

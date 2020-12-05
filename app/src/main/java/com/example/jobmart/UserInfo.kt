@@ -64,6 +64,7 @@ class UserInfo : AppCompatActivity() {
         edit_profile.setOnClickListener {
             val intent = Intent (this, EditProfile::class.java)
             startActivity(intent)
+            finish()
         }
 
 

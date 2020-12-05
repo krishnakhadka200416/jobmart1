@@ -28,10 +28,13 @@ class PostsAdapter (val context: Context, val posts:List<Post>):
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
         fun bind(post: Post) {
             itemView.tvUsername.text = post.user?.username
             itemView.tvAddress.text = post.address
             itemView.tvDescription.text = post.description
+            itemView.tvpay.text = post.pay
             Glide.with(context).load(post.imageUrl).into(itemView.ivPost)
             itemView.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 

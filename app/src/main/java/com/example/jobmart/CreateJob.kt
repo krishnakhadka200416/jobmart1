@@ -70,6 +70,10 @@ class CreateJob : AppCompatActivity() {
             Toast.makeText(this, "No Address", Toast.LENGTH_SHORT).show()
             return
         }
+        if(pay.text.isBlank() == null){
+            Toast.makeText(this, "No Pay Info", Toast.LENGTH_SHORT).show()
+            return
+        }
         if(radiocheck.getCheckedRadioButtonId() == -1){
             Toast.makeText(this, "No Type checked", Toast.LENGTH_SHORT).show()
             return
@@ -93,6 +97,7 @@ class CreateJob : AppCompatActivity() {
                     downloadUrlTask.result.toString(),
                     System.currentTimeMillis(),
                     etAddress.text.toString(),
+                    pay.text.toString(),
                     signedInUser)
                 firestoreDb.collection("posts").add(post)
             }.addOnCompleteListener{postCreationTask ->

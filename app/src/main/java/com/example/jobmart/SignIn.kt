@@ -38,9 +38,12 @@ class SignIn : AppCompatActivity() {
         finish()
     }
     forgotpassword.setOnClickListener {
-        forgotpassword()
-    }
 
+
+            forgotpassword()
+
+
+    }
 
 
 
@@ -59,6 +62,12 @@ fun updateUI(currentUser: FirebaseUser?) {
 }
 private fun forgotpassword()
 {
+    if(userName.text.toString().isEmpty()){
+        userName.error = "Please enter user name/email"
+        userName.requestFocus()
+        return
+
+    }
     auth.sendPasswordResetEmail(userName.text.toString())
         .addOnCompleteListener(this, OnCompleteListener { task ->
             if (task.isSuccessful) {

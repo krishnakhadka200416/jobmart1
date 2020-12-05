@@ -5,15 +5,72 @@
     android:layout_width="match_parent"
     android:layout_gravity="center_horizontal"
     android:layout_height="match_parent"
-    tools:context=".EditProfile">
+    tools:context=".EditProfile"
+    android:layout_alignParentTop="true"
+    android:orientation="vertical">
+
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/edit_profile"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginLeft="160dp"
-        android:text="Edit Information"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Edit Profile"
+        android:textSize="30sp" />
+
+
+
+    <EditText
+        android:id="@+id/update_profession"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Update Profession" />
+
+    <EditText
+        android:id="@+id/update_education"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="20dp"
+        android:inputType="textPersonName"
+        android:hint="Update Education" />
+
+    <EditText
+        android:id="@+id/update_interest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Update Interest" />
+
+    <EditText
+        android:id="@+id/update_goal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Update Goal"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="**Please Type in all the fields at once**"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="10sp"
+        android:textColor="@color/black"/>
+    <Button
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+
 </LinearLayout>

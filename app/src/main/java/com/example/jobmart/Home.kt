@@ -82,11 +82,20 @@ open class Home : AppCompatActivity() {
         facCreate1.setOnClickListener{
             val intent= Intent(this, Message::class.java )
             startActivity(intent)
+
         }
         fabcreate2.setOnClickListener{
             val intent= Intent(this, CreateJob::class.java )
             startActivity(intent)
+
         }
+        fabCreate3.setOnClickListener{
+            val intent= Intent(this, SearchActivity::class.java )
+            startActivity(intent)
+
+        }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
