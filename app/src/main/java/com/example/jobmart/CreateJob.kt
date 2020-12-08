@@ -98,7 +98,9 @@ class CreateJob : AppCompatActivity() {
                     System.currentTimeMillis(),
                     etAddress.text.toString(),
                     pay.text.toString(),
-                    signedInUser)
+                    signedInUser,
+                    userid =  FirebaseAuth.getInstance().currentUser?.uid as String
+                        )
                 firestoreDb.collection("posts").add(post)
             }.addOnCompleteListener{postCreationTask ->
                 btnpost.isEnabled = true

@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobMart">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".ChatLogActivity"></activity>
+        <activity android:name=".ViewUserActivity" />
+        <activity android:name=".LatestMessageActivity" />
+        <activity android:name=".LAtestMEssageActivity" />
+        <activity android:name=".NewMessageActivity" />
+        <activity android:name=".Single_message" />
+        <activity android:name=".SearchActivity" />
         <activity android:name=".EditProfile" />
         <activity android:name=".UserInfo" />
         <activity android:name=".CreateJob" />

@@ -8,5 +8,6 @@ data class Post(
     @get:PropertyName("creation_time_ms")   @set:PropertyName("creation_time_ms") var creationTimeMs: Long = 0,
     var address: String = "",
     var pay: String = "",
-    var user: User? = null
+    var user: User? = null,
+    var userid: String? = null
 )

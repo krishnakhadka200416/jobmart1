@@ -78,6 +78,7 @@ open class Home : AppCompatActivity() {
                 Log.i(TAG, "Post ${post}")
             }
 
+
         }
         facCreate1.setOnClickListener{
             val intent= Intent(this, Message::class.java )

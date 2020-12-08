@@ -2,11 +2,14 @@ package com.example.jobmart
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jobmart.models.User
+import com.example.jobmart.models.User_realtime
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -27,9 +30,22 @@ class Signup : AppCompatActivity() {
     auth = FirebaseAuth.getInstance()
 
     register.setOnClickListener{
+
         signupuser()
 
     }
+}
+private fun saveUserToFirebaseDatabase(){
+    val uid = FirebaseAuth.getInstance().uid ?:""
+    val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+    val user = User_realtime(FirebaseAuth.getInstance().currentUser?.uid as String, first_name.text.toString())
+    ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d(TAG, "USer Added to Firesbase database")
+            }
+            .addOnFailureListener{
+                Log.d(TAG, "USer not added")
+            }
 }
 private fun signupuser(){
     val user1 = User(
@@ -85,7 +101,7 @@ private fun signupuser(){
                     user["interest"] = interest1.text.toString()
                     user["profession"]=  profession1.text.toString()
                     user["username"] = first_name.text.toString()
-
+                saveUserToFirebaseDatabase()
                 db.collection("users").document(uidInput)
                     .set(user)
                     .addOnSuccessListener {
