@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+
 import com.example.jobmart.models.ChatMessage
 import com.example.jobmart.models.ChatUser
 import com.example.jobmart.util.DateUtil.getFormattedTimeChatLog
@@ -18,7 +18,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_chat_log.*
-import kotlinx.android.synthetic.main.activity_user_info.*
+
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
 import java.math.BigInteger
