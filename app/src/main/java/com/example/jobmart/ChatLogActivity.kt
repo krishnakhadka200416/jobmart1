@@ -1,5 +1,6 @@
 package com.example.jobmart
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,12 +21,14 @@ import kotlinx.android.synthetic.main.activity_chat_log.*
 import kotlinx.android.synthetic.main.activity_user_info.*
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
-
+import java.math.BigInteger
+import java.security.MessageDigest
+var user_to: ChatUser = ChatUser("","")
 class ChatLogActivity : AppCompatActivity() {
 
     private lateinit var firestoreDb : FirebaseFirestore
     val adapter = GroupAdapter<ViewHolder>()
-    var user_to: ChatUser = ChatUser("","")
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +70,6 @@ class ChatLogActivity : AppCompatActivity() {
         val fromId = FirebaseAuth.getInstance().uid ?: return
         val toId = user_to.uid
         val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
-
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.d("ChatLogActivity", "database error: " + databaseError.message)
@@ -94,12 +96,18 @@ class ChatLogActivity : AppCompatActivity() {
 
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 dataSnapshot.getValue(ChatMessage::class.java)?.let {
+
+
                     if (it.fromId == FirebaseAuth.getInstance().uid) {
                         val currentUser = Message.currentUser ?: return
+
                         adapter.add(ChatFromItem(it.text, currentUser, it.timestamp))
+
+
                     } else {
                         adapter.add(ChatToItem(it.text, user_to, it.timestamp))
                     }
+
                 }
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
                 swiperefresh.isRefreshing = false
@@ -121,6 +129,7 @@ class ChatLogActivity : AppCompatActivity() {
 
         val fromId = FirebaseAuth.getInstance().uid ?: return
         val toId = user_to.uid
+
 
         val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
         val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
@@ -150,21 +159,15 @@ class ChatFromItem(val text: String, val user: ChatUser, val timestamp: Long) : 
 
         viewHolder.itemView.textview_from_row.text = text
         viewHolder.itemView.from_msg_time.text = getFormattedTimeChatLog(timestamp)
-
-       // val targetImageView = viewHolder.itemView.imageview_chat_from_row
-
-      /*  if (!user.profileImageUrl!!.isEmpty()) {
-
-            val requestOptions = RequestOptions().placeholder(R.drawable.no_image2)
-
-
-            Glide.with(targetImageView.context)
-                .load(user.profileImageUrl)
-                .thumbnail(0.1f)
-                .apply(requestOptions)
-                .into(targetImageView)
-
-        }*/
+        fun getProfileImageURl(username:String): String{
+            val digest = MessageDigest.getInstance("MD5");
+            val hash = digest.digest(username.toByteArray());
+            val bigInt = BigInteger(hash)
+            val hex = bigInt.abs().toString(16)
+            return "https://www.gravatar.com/avatar/$hex?d=identicon";
+        }
+        val targetImageView = viewHolder.itemView.imageview_chat_from_row
+        Glide.with(targetImageView.context).load(getProfileImageURl(user.username)).into(targetImageView)
 
     }
 
@@ -178,22 +181,35 @@ class ChatToItem(val text: String, val user: ChatUser, val timestamp: Long) : It
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textview_to_row.text = text
         viewHolder.itemView.to_msg_time.text = getFormattedTimeChatLog(timestamp)
-
-        //val targetImageView = viewHolder.itemView.imageview_chat_to_row
-
-       /* if (!user.profileImageUrl!!.isEmpty()) {
-
-            val requestOptions = RequestOptions().placeholder(com.google.firebase.database.R.drawable.no_image2)
-
-            Glide.with(targetImageView.context)
-                .load(user.profileImageUrl)
-                .thumbnail(0.1f)
-                .apply(requestOptions)
-                .into(targetImageView)
-
+        val db = FirebaseFirestore.getInstance()
+        fun getProfileImageURl(username:String): String{
+            val digest = MessageDigest.getInstance("MD5");
+            val hash = digest.digest(username.toByteArray());
+            val bigInt = BigInteger(hash)
+            val hex = bigInt.abs().toString(16)
+            return "https://www.gravatar.com/avatar/$hex?d=identicon";
         }
+        var uname:String =""
+        val targetImageView = viewHolder.itemView.imageview_chat_to_row
+        db.collection("users")
+            .document(user_to.uid)
+            .get()
+            .addOnSuccessListener { document->
+                uname = document.data?.getValue("username").toString()
 
-        */
+                Glide.with(targetImageView.context).load(getProfileImageURl(uname)).into(targetImageView)
+
+
+            }
+            .addOnFailureListener{exception ->
+                Log.i("hi", "Failure fetching signed in user", exception)
+
+            }
+
+
+
+
+
     }
 
     override fun getLayout(): Int {

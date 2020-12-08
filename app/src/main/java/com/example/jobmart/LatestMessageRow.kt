@@ -17,7 +17,10 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.item_post.view.*
 import kotlinx.android.synthetic.main.latest_message_row.view.*
+import java.math.BigInteger
+import java.security.MessageDigest
 
 class LatestMessageRow (val chatMessage: ChatMessage, val context: Context) : Item<ViewHolder>() {
     private lateinit var firestoreDb : FirebaseFirestore
@@ -29,6 +32,13 @@ class LatestMessageRow (val chatMessage: ChatMessage, val context: Context) : It
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.latest_message_textview.text = chatMessage.text
+        fun getProfileImageURl(username:String): String{
+            val digest = MessageDigest.getInstance("MD5");
+            val hash = digest.digest(username.toByteArray());
+            val bigInt = BigInteger(hash)
+            val hex = bigInt.abs().toString(16)
+            return "https://www.gravatar.com/avatar/$hex?d=identicon";
+        }
 
         val chatPartnerId: String
         if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
@@ -43,6 +53,7 @@ class LatestMessageRow (val chatMessage: ChatMessage, val context: Context) : It
             .get()
             .addOnSuccessListener { document->
                 uname = document.data?.getValue("username").toString()
+                Glide.with(context).load(getProfileImageURl(uname)).into(viewHolder.itemView.imageview_latest_message)
                 Log.i("LAtestmsg row", uname)
                }
 
@@ -56,6 +67,8 @@ class LatestMessageRow (val chatMessage: ChatMessage, val context: Context) : It
                 chatPartnerUser = p0.getValue(ChatUser::class.java)
                 viewHolder.itemView.username_textview_latest_message.text = chatPartnerUser?.username.toString()
                 viewHolder.itemView.latest_msg_time.text = DateUtil.getFormattedTime(chatMessage.timestamp)
+
+
 
 
             }
